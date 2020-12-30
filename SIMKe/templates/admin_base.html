@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="{{ url_for ('static', filename="css/bootstrap.min.css")}}" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+		<!-- <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="css/style.css")}}"> -->
+		<title>Admin SIMKe Marikurubu</title>
+		<link rel="icon" href="{{ url_for ('static', filename="foto/logo1.png")}}" type="image/x-icon">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="bower_components/bootstrap/dist/css/bootstrap.min.css")}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="assets/icon/themify-icons/themify-icons.css")}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="assets/icon/icofont/css/icofont.css")}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="assets/pages/flag-icon/flag-icon.min.css")}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="assets/pages/menu-search/css/component.css")}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="assets/pages/dashboard/horizontal-timeline/css/style.css")}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="assets/pages/dashboard/amchart/css/amchart.css")}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="assets/pages/flag-icon/flag-icon.min.css")}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="assets/css/style.css")}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="assets/css/color/color-1.css")}}" id="color" />
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="assets/css/linearicons.css")}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="assets/css/simple-line-icons.css")}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="assets/css/ionicons.css")}}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="assets/css/jquery.mCustomScrollbar.css")}}">
+	</head>
+	<body>
+
+		<div class="theme-loader">
+			<div class="ball-scale">
+				<div></div>
+			</div>
+		</div>
+
+		<div id="pcoded" class="pcoded">
+			<div class="pcoded-overlay-box"></div>
+			<div class="pcoded-container navbar-wrapper">
+
+				<!-- NAVBAR -->
+				<nav class="navbar header-navbar pcoded-header" header-theme="theme4">
+					<div class="navbar-wrapper">
+						<div class="navbar-logo">
+							<a class="mobile-menu" id="mobile-collapse" href="javascript:void(0)">
+								<i class="ti-menu"></i>
+							</a>
+							<a href="{{ url_for("radmin.adminHome")}}">
+								<img class="img-fluid" src="{{ url_for ('static', filename="foto/logo1.png")}}" alt="Theme-Logo" width="40" height="40" />
+							</a>
+							<a href="">
+								Kelurahan Marikurubu <br>
+								Kota Ternate
+							</a>
+							<a class="mobile-options">
+								<i class="ti-more"></i>
+							</a>
+						</div>
+						<div class="navbar-container container-fluid">
+							<div>
+								<ul class="nav-left">
+									<li>
+										<div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+									</li>
+								</ul>
+								<ul class="nav-right">
+									<li class="user-profile header-notification" style="padding-right: 250px;">
+										<a href="#!">
+											<img src="{{ url_for ('static', filename="assets/images/user.png")}}" alt="User-Profile-Image">
+											<span>Fikram Tamrin</span>
+											<i class="ti-angle-down"></i>
+										</a>
+										<ul class="show-notification profile-notification" style="margin-right: 250px;">
+											<li>
+												<a href="{{ url_for("radmin.adminSettings")}}">
+													<i class="ti-settings"></i> Settings
+												</a>
+											</li>
+											<li>
+												<a href="{{ url_for("radmin.adminProfile")}}">
+													<i class="ti-user"></i> Profile
+												</a>
+											</li>
+											<li>
+												<a href="#!">
+													<i class="ti-layout-sidebar-left"></i> Logout
+												</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</nav>
+				<!-- end NAVBAR -->
+				
+				<!-- SIDEBAR -->
+				<div class="pcoded-main-container">
+					<div class="pcoded-wrapper">
+						<nav class="pcoded-navbar" pcoded-header-position="relative">
+							<div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+							<div class="pcoded-inner-navbar main-menu">
+								<div class="">
+									<div class="main-menu-header">
+										<img class="img-40" src="{{ url_for ('static', filename="assets/images/user.png")}}" alt="User-Profile-Image">
+										<div class="user-details">
+											<span>Fikram Tamrin</span>
+											<span id="more-details">Super Admin<i class="ti-angle-down"></i></span>
+										</div>
+									</div>
+									<div class="main-menu-content">
+										<ul>
+											<li class="more-details">
+												<a href="{{ url_for("radmin.adminProfile")}}"><i class="ti-user"></i>View Profile</a>
+												<a href="{{ url_for("radmin.adminSettings")}}"><i class="ti-settings"></i>Settings</a>
+												<a href="#!"><i class="ti-layout-sidebar-left"></i>Logout</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation" menu-title-theme="theme5">Navigation</div>
+								<ul class="pcoded-item pcoded-left-item">
+									<!-- active pcoded-trigger (tambahan di il class="active pcoded-trigger" jika perlu) -->
+									<li class="pcoded-hasmenu">
+										<a href="javascript:void(0)">
+											<span class="pcoded-micon"><i class="ti-home"></i></span>
+											<span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+											<span class="pcoded-mcaret"></span>
+										</a>
+										<ul class="pcoded-submenu">
+											<li class="">
+												<a href="{{ url_for("radmin.adminHome")}}">
+													<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+													<span class="pcoded-mtext" data-i18n="nav.dash.default">Rekapan</span>
+													<span class="pcoded-mcaret"></span>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="pcoded-hasmenu">
+										<a href="javascript:void(0)">
+											<span class="pcoded-micon"><i class="ti-user"></i></span>
+											<span class="pcoded-mtext" data-i18n="nav.dash.main">Pendaftaran</span>
+											<span class="pcoded-mcaret"></span>
+										</a>
+										<ul class="pcoded-submenu">
+											<li class="">
+												<a href="{{ url_for("radmin.adminPendaftaranAkunAdmin")}}">
+													<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+													<span class="pcoded-mtext" data-i18n="nav.dash.default">Akun Admin</span>
+													<span class="pcoded-mcaret"></span>
+												</a>
+											</li>
+										</ul>
+										<ul class="pcoded-submenu">
+											<li class="">
+												<a href="{{ url_for("radmin.adminPendaftaranAkunWarga")}}">
+													<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+													<span class="pcoded-mtext" data-i18n="nav.dash.default">Akun Warga</span>
+													<span class="pcoded-mcaret"></span>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="pcoded-hasmenu">
+										<a href="javascript:void(0)">
+											<span class="pcoded-micon"><i class="ti-user"></i></span>
+											<span class="pcoded-mtext" data-i18n="nav.dash.main">Edit Akun</span>
+											<span class="pcoded-mcaret"></span>
+										</a>
+										<ul class="pcoded-submenu">
+											<li class="">
+												<a href="{{ url_for("radmin.adminEditAkunAdmin")}}">
+													<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+													<span class="pcoded-mtext" data-i18n="nav.dash.default">Admin</span>
+													<span class="pcoded-mcaret"></span>
+												</a>
+											</li>
+										</ul>
+										<ul class="pcoded-submenu">
+											<li class="">
+												<a href="{{ url_for("radmin.adminEditAkunWarga")}}">
+													<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+													<span class="pcoded-mtext" data-i18n="nav.dash.default">Warga</span>
+													<span class="pcoded-mcaret"></span>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="pcoded-hasmenu">
+										<a href="javascript:void(0)">
+											<span class="pcoded-micon"><i class="ti-pencil-alt"></i></span>
+											<span class="pcoded-mtext" data-i18n="nav.dash.main">Tambah Data</span>
+											<span class="pcoded-mcaret"></span>
+										</a>
+										<ul class="pcoded-submenu">
+											<li class="">
+												<a href="{{ url_for("radmin.adminTambahDataProfile")}}">
+													<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+													<span class="pcoded-mtext" data-i18n="nav.dash.default">Profile</span>
+													<span class="pcoded-mcaret"></span>
+												</a>
+											</li>
+										</ul>
+										<ul class="pcoded-submenu">
+											<li class="">
+												<a href="{{ url_for("radmin.adminTambahDataGds")}}">
+													<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+													<span class="pcoded-mtext" data-i18n="nav.dash.default">Data GDS</span>
+													<span class="pcoded-mcaret"></span>
+												</a>
+											</li>
+										</ul>
+										<ul class="pcoded-submenu">
+											<li class="">
+												<a href="{{ url_for("radmin.adminTambahDataMedia")}}">
+													<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+													<span class="pcoded-mtext" data-i18n="nav.dash.default">Media</span>
+													<span class="pcoded-mcaret"></span>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="pcoded-hasmenu">
+										<a href="javascript:void(0)">
+											<span class="pcoded-micon"><i class="ti-pencil-alt"></i></span>
+											<span class="pcoded-mtext" data-i18n="nav.dash.main">Edit Data</span>
+											<span class="pcoded-mcaret"></span>
+										</a>
+										<ul class="pcoded-submenu">
+											<li class="">
+												<a href="{{ url_for("radmin.adminEditDataProfile")}}">
+													<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+													<span class="pcoded-mtext" data-i18n="nav.dash.default">Profile</span>
+													<span class="pcoded-mcaret"></span>
+												</a>
+											</li>
+										</ul>
+										<ul class="pcoded-submenu">
+											<li class="">
+												<a href="{{ url_for("radmin.adminEditDataGds")}}">
+													<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+													<span class="pcoded-mtext" data-i18n="nav.dash.default">Data GDS</span>
+													<span class="pcoded-mcaret"></span>
+												</a>
+											</li>
+										</ul>
+										<ul class="pcoded-submenu">
+											<li class="">
+												<a href="{{ url_for("radmin.adminEditDataMedia")}}">
+													<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+													<span class="pcoded-mtext" data-i18n="nav.dash.default">Media</span>
+													<span class="pcoded-mcaret"></span>
+												</a>
+											</li>
+										</ul>
+									</li>
+									<li class="pcoded-hasmenu">
+										<a href="javascript:void(0)">
+											<span class="pcoded-micon"><i class="ti-write"></i></span>
+											<span class="pcoded-mtext" data-i18n="nav.dash.main">Pelayanan</span>
+											<span class="pcoded-mcaret"></span>
+										</a>
+										<ul class="pcoded-submenu">
+											<li class="">
+												<a href="{{ url_for("radmin.adminPelayananSktm")}}">
+													<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+													<span class="pcoded-mtext" data-i18n="nav.dash.default">Surat KTM</span>
+													<span class="pcoded-mcaret"></span>
+												</a>
+											</li>
+										</ul>
+										<ul class="pcoded-submenu">
+											<li class="">
+												<a href="{{ url_for("radmin.adminPelayananSkbm")}}">
+													<span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+													<span class="pcoded-mtext" data-i18n="nav.dash.default">Surat KBM</span>
+													<span class="pcoded-mcaret"></span>
+												</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</nav>
+						<div class="pcoded-content">
+							<div class="pcoded-inner-content">
+								<div class="main-body">
+									<div class="page-wrapper">
+										
+											{% block konten %}
+
+											{% endblock %}
+									
+									</div>
+									<div id="styleSelector">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end SIDEBAR -->
+		
+		<!-- script js  -->
+	<script src="{{ url_for ('static', filename="js/bootstrap.bundle.min.js")}}" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="{{ url_for ('static', filename="bower_components/jquery/dist/jquery.min.js")}}"></script>
+	<script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="bower_components/tether/dist/js/tether.min.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="bower_components/bootstrap/dist/js/bootstrap.min.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="bower_components/jquery-slimscroll/jquery.slimscroll.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="bower_components/modernizr/modernizr.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="bower_components/modernizr/feature-detects/css-scrollbars.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="bower_components/classie/classie.js")}}"></script>
+	<script src="{{ url_for ('static', filename="bower_components/d3/d3.js")}}"></script>
+	<script src="{{ url_for ('static', filename="bower_components/rickshaw/rickshaw.js")}}"></script>
+	<script src="{{ url_for ('static', filename="bower_components/raphael/raphael.min.js")}}"></script>
+	<script src="{{ url_for ('static', filename="bower_components/morris.js/morris.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="assets/pages/dashboard/horizontal-timeline/js/main.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="assets/pages/dashboard/amchart/js/amcharts.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="assets/pages/dashboard/amchart/js/serial.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="assets/pages/dashboard/amchart/js/light.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="assets/pages/dashboard/amchart/js/custom-amchart.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="bower_components/i18next/i18next.min.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="bower_components/i18next-xhr-backend/i18nextXHRBackend.min.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="bower_components/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="bower_components/jquery-i18next/jquery-i18next.min.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="assets/pages/dashboard/custom-dashboard.js")}}"></script>
+	<script type="text/javascript" src="{{ url_for ('static', filename="assets/js/script.js")}}"></script>
+	<script src="{{ url_for ('static', filename="assets/js/pcoded.min.js")}}"></script>
+	<script src="{{ url_for ('static', filename="assets/js/demo-12.js")}}"></script>
+	<script src="{{ url_for ('static', filename="assets/js/jquery.mCustomScrollbar.concat.min.js")}}"></script>
+	<script src="{{ url_for ('static', filename="assets/js/jquery.mousewheel.min.js")}}"></script>
+	<!-- end script js -->
+	
+	</body>
+</html>

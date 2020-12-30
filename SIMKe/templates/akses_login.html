@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block konten %}
+
+<div class="container-fluid">
+  <div class="row justify-content-center" style="padding-top: 60px;">
+    <div class="col-sm-4">
+      <div class="card bg-light border-info" style="width: 18rem;">
+        <img src="{{ url_for ('static', filename="foto/aksesuser.png")}}" class="card-img-top" alt="...">
+        <div class="card-body d-grid col-6 mx-auto">
+          <a href="{{ url_for("ruser.loginWarga")}}" class="btn btn-outline-info">Warga</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card bg-light border-info" style="width: 18rem;">
+        <img src="{{ url_for ('static', filename="foto/aksesadmin.png")}}" class="card-img-top" alt="...">
+        <div class="card-body d-grid col-6 mx-auto">
+          <a href="{{ url_for("radmin.loginAdmin")}}" class="btn btn-outline-info">Admin</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

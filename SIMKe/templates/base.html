@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="{{ url_for ('static', filename="css/bootstrap.min.css")}}" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+		<!-- <link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename="css/style.css")}}"> -->
+		<title>SIMKe Marikurubu</title>
+		<link rel="icon" href="{{ url_for ('static', filename="foto/logo1.png")}}" type="image/x-icon">
+	</head>
+	<body>	
+
+		<!-- BAGIAN 1 NAVBAR -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+			  <a class="navbar-brand" href="{{ url_for("ruser.home")}}">
+					<img src="{{ url_for ('static', filename="foto/logo1.png")}}" alt="" width="70" height="80" class="d-inline-block align-top">
+				</a>
+				<a class="navbar-brand" href="{{ url_for("ruser.home")}}" style="margin-right: 80px;">
+					<h3>Kelurahan Marikurubu</h3>
+					<h5>Kota Ternate</h5>
+				</a>
+			  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				  <li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="{{ url_for("ruser.home")}}">Dashboard</a>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  Profile
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="{{ url_for("ruser.pSambutan")}}">Sambutan</a>
+						<a class="dropdown-item" href="{{ url_for("ruser.pSejarah")}}">Sejarah</a>
+						<a class="dropdown-item" href="{{ url_for("ruser.pVisimisi")}}">Visi Misi</a>
+					</ul>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  Data
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="{{ url_for("ruser.dGeografi")}}">Geografi</a>
+						<a class="dropdown-item" href="{{ url_for("ruser.dDemografi")}}">Demografi</a>
+						<a class="dropdown-item" href="{{ url_for("ruser.dSosial")}}">Sosial</a>
+					</ul>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  Media
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="{{ url_for("ruser.mFoto")}}">Galeri Foto</a>
+						<a class="dropdown-item" href="{{ url_for("ruser.mBerita")}}">Berita</a>
+					</ul>
+				  </li>
+				  <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					  Pelayanan
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					  <a class="dropdown-item" href="#">Surat Online</a>
+					</ul>
+				  </li>
+				</ul>
+				<form class="d-flex">
+				  <a class="btn btn-outline-primary my-2 my-sm-0" href="{{ url_for("ruser.aksesLogin")}}">Akses Login</a>
+				</form>
+			  </div>
+			</div>
+		</nav>
+		<!-- END BAGIAN 1 -->
+  
+	{% block konten %}
+
+	{% endblock %}
+  
+		
+	<script src="{{ url_for ('static', filename="js/bootstrap.bundle.min.js")}}" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+	</body>
+</html>
