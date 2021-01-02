@@ -1,23 +1,5 @@
-/* ul{
-    list-style: none;
+@media (max-width: 670px){
+    .logo img{
+        display: none;
+    }
 }
-
-ul.logonav{
-    margin-left: -50px;
-}
-
-ul.logonav h3{
-    margin-bottom: -4px;
-}
-
-.navbar{
-    height: 90px;
-}
-
-.cardlogin{
-    margin: 4rem 0 0 22rem;
-}
-
-.adminnav{
-    padding-left: 40rem;
-} */
