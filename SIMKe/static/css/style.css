@@ -1,5 +1,5 @@
 @media (max-width: 670px){
-    .logo img{
+    .tagline h3,h5{
         display: none;
     }
 }
