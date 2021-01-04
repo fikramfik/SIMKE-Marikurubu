@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, Blueprint, flash, request
+from SIMKe.admin.forms import pendaftaranAdmin
 
 
 radmin = Blueprint('radmin',__name__)
@@ -19,9 +20,13 @@ def adminProfile():
 def adminSettings():
     return render_template("admin_settings.html")
 
-@radmin.route("/pendaftaran-akun-admin")
+@radmin.route("/pendaftaran-akun-admin", methods=['GET', 'POST'])
 def adminPendaftaranAkunAdmin():
-    return render_template("pendaftaran_akun_admin.html")
+    form = pendaftaranAdmin()
+    if form.validate_on_submit():
+        flash(f'Akun - {form.email.data} berhasil daftar','warning')
+        return redirect(url_for('radmin.adminPendaftaranAkunAdmin'))
+    return render_template("pendaftaran_akun_admin.html", form=form)
 
 @radmin.route("/pendaftaran-akun-warga")
 def adminPendaftaranAkunWarga():

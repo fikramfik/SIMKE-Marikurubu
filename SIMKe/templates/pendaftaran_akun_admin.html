@@ -12,27 +12,68 @@
 		<div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
 			<div class="card-header text-center"></div>
 			<div class="card-body">
-				<form>
+				<form method="POST">
+					{{form.hidden_tag()}}
 					<div class="row mb-3">
-						<label class="form-label">Nama</label>
-						<input class="form-control">
+						{{form.nama.label(class="form-label")}}
+						{% if form.nama.errors %}
+							{{form.nama(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.nama.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.nama(class="form-control")}}
+						{% endif %}
 					</div>
 					<div class="row mb-3">
-						<label class="form-label">Email</label>
-						<input class="form-control">
+						{{form.email.label(class="form-label")}}
+						{% if form.email.errors %}
+							{{form.email(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.email.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.email(class="form-control")}}
+						{% endif %}
 					</div>
 					<div class="row mb-3">
-						<label class="form-label">Password</label>
-						<input class="form-control">
+						{{form.password.label(class="form-label")}}
+						{% if form.password.errors %}
+							{{form.password(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.password.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.password(class="form-control")}}
+						{% endif %}
 					</div>
 					<div class="row mb-3">
-						<label class="form-label">Konfirmasi Password</label>
-						<input class="form-control">
+						{{form.konf_pass.label(class="form-label")}}
+						{% if form.konf_pass.errors %}
+							{{form.konf_pass(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.konf_pass.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.konf_pass(class="form-control")}}
+						{% endif %}
 					</div>
 					<div class="d-grid col-3 mx-auto">
-						<button type="submit" class="btn btn-outline-light d-grid">Daftar</button>
+						{{form.submit(class="btn btn-outline-light d-grid")}}
 					</div>
 				</form>
+				<label for="">Nama : </label>{{form.nama.data}} <br>
+				<label for="">Email : </label>{{form.email.data}} <br>
+				<label for="">Password : </label>{{form.password.data}} <br>
+				<label for="">Konfir : </label>{{form.konf_pass.data}}
 			</div>
 		</div>
 	</div>
