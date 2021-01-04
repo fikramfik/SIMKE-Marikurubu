@@ -3,3 +3,9 @@
         display: none;
     }
 }
+
+@media (max-width: 767px){
+    .logo-makugawene{
+        opacity: 0;
+    }
+}
