@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, Blueprint, flash, request
-from SIMKe.admin.forms import pendaftaranAdmin
+from SIMKe.admin.forms import pendaftaranAdmin, pendaftaranWarga, tambahDataProfile, tambahDataGDS, tambahDataMedia
 
 
 radmin = Blueprint('radmin',__name__)
@@ -28,9 +28,13 @@ def adminPendaftaranAkunAdmin():
         return redirect(url_for('radmin.adminPendaftaranAkunAdmin'))
     return render_template("pendaftaran_akun_admin.html", form=form)
 
-@radmin.route("/pendaftaran-akun-warga")
+@radmin.route("/pendaftaran-akun-warga", methods=['GET', 'POST'])
 def adminPendaftaranAkunWarga():
-    return render_template("pendaftaran_akun_warga.html")
+    form = pendaftaranWarga()
+    if form.validate_on_submit():
+        flash(f'Akun - {form.nik.data} berhasil daftar','warning')
+        return redirect(url_for('radmin.adminPendaftaranAkunWarga'))
+    return render_template("pendaftaran_akun_warga.html", form=form)
 
 @radmin.route("/edit-akun-admin")
 def adminEditAkunAdmin():
@@ -40,17 +44,29 @@ def adminEditAkunAdmin():
 def adminEditAkunWarga():
     return render_template("edit_akun_warga.html")
 
-@radmin.route("/tambah-data-profile")
+@radmin.route("/tambah-data-profile", methods=['GET', 'POST'])
 def adminTambahDataProfile():
-    return render_template("tambah_data_profile.html")
+    form = tambahDataProfile()
+    if form.validate_on_submit():
+        flash(f'Data Profile Berhasil ditambahkan','warning')
+        return redirect(url_for('radmin.adminTambahDataProfile'))
+    return render_template("tambah_data_profile.html", form=form)
 
-@radmin.route("/tambah-data-gds")
+@radmin.route("/tambah-data-gds", methods=['GET', 'POST'])
 def adminTambahDataGds():
-    return render_template("tambah_data_gds.html")
+    form = tambahDataGDS()
+    if form.validate_on_submit():
+        flash(f'Data GDS Berhasil ditambahkan','warning')
+        return redirect(url_for('radmin.adminTambahDataGds'))
+    return render_template("tambah_data_gds.html", form=form)
 
-@radmin.route("/tambah-data-media")
+@radmin.route("/tambah-data-media", methods=['GET', 'POST'])
 def adminTambahDataMedia():
-    return render_template("tambah_data_media.html")
+    form = tambahDataMedia()
+    if form.validate_on_submit():
+        flash(f'Data Media Berhasil ditambahkan','warning')
+        return redirect(url_for('radmin.adminTambahDataMedia'))
+    return render_template("tambah_data_media.html", form=form)
 
 @radmin.route("/edit-data-profile")
 def adminEditDataProfile():

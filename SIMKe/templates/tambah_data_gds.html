@@ -8,7 +8,58 @@
     </div>
 </div>
 <div class="page-body">
-
+    <div class="row justify-content-center" style="padding-top: 50px;">
+		<div class="card text-white bg-success mb-3" style="max-width: 40rem;">
+			<div class="card-header text-center"></div>
+			<div class="card-body">
+				<form method="POST">
+					{{form.hidden_tag()}}
+					<div class="row mb-3">
+						{{form.geografi.label(class="form-label")}}
+						{% if form.geografi.errors %}
+							{{form.geografi(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.geografi.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.geografi(class="form-control")}}
+						{% endif %}
+					</div>
+					<div class="row mb-3">
+						{{form.demografi.label(class="form-label")}}
+						{% if form.demografi.errors %}
+							{{form.demografi(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.demografi.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.demografi(class="form-control")}}
+						{% endif %}
+					</div>
+					<div class="row mb-3">
+						{{form.sosial.label(class="form-label")}}
+						{% if form.sosial.errors %}
+							{{form.sosial(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.sosial.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.sosial(class="form-control")}}
+						{% endif %}
+					</div>
+					<div class="d-grid col-3 mx-auto">
+						{{form.submit(class="btn btn-outline-light d-grid")}}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 {% endblock %}

@@ -8,7 +8,58 @@
     </div>
 </div>
 <div class="page-body">
-
+    <div class="row justify-content-center" style="padding-top: 50px;">
+		<div class="card text-white bg-success mb-3" style="max-width: 40rem;">
+			<div class="card-header text-center"></div>
+			<div class="card-body">
+				<form method="POST">
+					{{form.hidden_tag()}}
+					<div class="row mb-3">
+						{{form.sambutan.label(class="form-label")}}
+						{% if form.sambutan.errors %}
+							{{form.sambutan(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.sambutan.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.sambutan(class="form-control")}}
+						{% endif %}
+					</div>
+					<div class="row mb-3">
+						{{form.sejarah.label(class="form-label")}}
+						{% if form.sejarah.errors %}
+							{{form.sejarah(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.sejarah.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.sejarah(class="form-control")}}
+						{% endif %}
+					</div>
+					<div class="row mb-3">
+						{{form.visimisi.label(class="form-label")}}
+						{% if form.visimisi.errors %}
+							{{form.visimisi(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.visimisi.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.visimisi(class="form-control")}}
+						{% endif %}
+					</div>
+					<div class="d-grid col-3 mx-auto">
+						{{form.submit(class="btn btn-outline-light d-grid")}}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 {% endblock %}

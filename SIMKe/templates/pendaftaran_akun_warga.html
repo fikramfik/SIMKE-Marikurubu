@@ -8,7 +8,71 @@
     </div>
 </div>
 <div class="page-body">
-
+    <div class="row justify-content-center" style="padding-top: 50px;">
+		<div class="card text-white bg-primary mb-3" style="max-width: 40rem;">
+			<div class="card-header text-center"></div>
+			<div class="card-body">
+				<form method="POST">
+					{{form.hidden_tag()}}
+					<div class="row mb-3">
+						{{form.nik.label(class="form-label")}}
+						{% if form.nik.errors %}
+							{{form.nik(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.nik.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.nik(class="form-control")}}
+						{% endif %}
+					</div>
+					<div class="row mb-3">
+						{{form.nama.label(class="form-label")}}
+						{% if form.nama.errors %}
+							{{form.nama(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.nama.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.nama(class="form-control")}}
+						{% endif %}
+					</div>
+					<div class="row mb-3">
+						{{form.password.label(class="form-label")}}
+						{% if form.password.errors %}
+							{{form.password(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.password.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.password(class="form-control")}}
+						{% endif %}
+					</div>
+					<div class="row mb-3">
+						{{form.konf_pass.label(class="form-label")}}
+						{% if form.konf_pass.errors %}
+							{{form.konf_pass(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.konf_pass.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.konf_pass(class="form-control")}}
+						{% endif %}
+					</div>
+					<div class="d-grid col-3 mx-auto">
+						{{form.submit(class="btn btn-outline-light d-grid")}}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 {% endblock %}
