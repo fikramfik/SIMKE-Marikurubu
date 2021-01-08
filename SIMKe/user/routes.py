@@ -11,10 +11,6 @@ def home():
 def aksesLogin():
     return render_template("akses_login.html")
 
-@ruser.route("/login-warga")
-def loginWarga():
-    return render_template("login_warga.html")
-
 @ruser.route("/profil-sambutan")
 def pSambutan():
     return render_template("psambutan.html")

@@ -1,33 +1,54 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="{{ url_for ('static', filename="css/bootstrap.min.css")}}" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="{{ url_for ('static', filename='css/style.css')}}">
+		<title>SIMKe Marikurubu</title>
+		<link rel="icon" href="{{ url_for ('static', filename="foto/logo1.png")}}" type="image/x-icon">
+	</head>
+	<body>	
 
-{% block konten %}
-
-<div class="container-fluid">
-	<div class="row justify-content-center" style="padding-top: 80px;">
-		<div class="card text-white bg-dark mb-3" style="max-width: 37rem;">
-			<div class="card-header text-center">Admin</div>
-			<div class="card-body">
-				<form>
-					<div class="row mb-3">
-						<label class="col-sm-2 col-form-label">Email</label>
-						<div class="col-sm-10">
-							<input class="form-control">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label class="col-sm-2 col-form-label">Password</label>
-						<div class="col-sm-10">
-							<input class="form-control">
-						</div>
-					</div>
-					<div class="d-grid col-2 mx-auto">
-						<!-- <button type="submit" class="btn btn-outline-light d-grid">Login</button> -->
-						<a class="btn btn-outline-light d-grid" href="{{ url_for("radmin.adminHome")}}">Login</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
-
-{% endblock %}
+		<!-- BAGIAN 1 NAVBAR -->
+		<nav class="navbar navbar-light bg-light">
+			<div class="container-fluid" style="width: 424px;">
+			  <a class="navbar-brand logo" href="{{ url_for("ruser.home")}}">
+					<img src="{{ url_for ('static', filename="foto/logo1.png")}}" alt="" width="70" height="80" class="d-inline-block align-top">
+				</a>
+				<a class="navbar-brand" href="{{ url_for("ruser.home")}}">
+					<h3>Kelurahan Marikurubu</h3>
+					<h5>Kota Ternate</h5>
+				</a>
+            </div>
+        </nav>    
+        <div class="container-fluid bg-secondary" style="height: 528.5px;">
+            <div class="row justify-content-center" style="padding-top: 80px;">
+                    <div class="card text-white bg-dark mb-3 shadow" style="max-width: 37rem;">
+                        <div class="card-header text-center">Admin</div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control">
+                                    </div>
+                                </div>
+                                <div class="d-grid col-2 mx-auto">
+                                    <button type="submit" class="btn btn-outline-light d-grid">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>           
+		
+	<script src="{{ url_for ('static', filename="js/bootstrap.bundle.min.js")}}" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+	</body>
+</html>
