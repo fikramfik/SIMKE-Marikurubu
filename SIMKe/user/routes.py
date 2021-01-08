@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, Blueprint, flash, request
-
+from SIMKe.user.forms import loginWarga
 
 ruser = Blueprint('ruser',__name__)
 
@@ -7,9 +7,13 @@ ruser = Blueprint('ruser',__name__)
 def home():
     return render_template("home.html")
 
-@ruser.route("/akses-login")
+@ruser.route("/akses-login", methods=['GET', 'POST'])
 def aksesLogin():
-    return render_template("akses_login.html")
+    form = loginWarga()
+    if form.validate_on_submit():
+        flash(f'Selamat Datang !!!','info')
+        return redirect(url_for('ruser.aksesLogin'))
+    return render_template("akses_login.html", form=form)
 
 @ruser.route("/profil-sambutan")
 def pSambutan():

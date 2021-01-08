@@ -3,6 +3,11 @@ from wtforms import StringField, SubmitField, TextAreaField, PasswordField, Sele
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flask_wtf.file import FileField, FileAllowed
 
+class floginAdmin(FlaskForm):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Login')
+
 class pendaftaranAdmin(FlaskForm):
     nama = StringField('Nama', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])

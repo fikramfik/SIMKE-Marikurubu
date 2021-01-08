@@ -1,12 +1,16 @@
 from flask import Flask, render_template, redirect, url_for, Blueprint, flash, request
-from SIMKe.admin.forms import pendaftaranAdmin, pendaftaranWarga, tambahDataProfile, tambahDataGDS, tambahDataMedia
+from SIMKe.admin.forms import pendaftaranAdmin, pendaftaranWarga, tambahDataProfile, tambahDataGDS, tambahDataMedia, floginAdmin
 
 
 radmin = Blueprint('radmin',__name__)
 
-@radmin.route("/login-admin")
+@radmin.route("/login-admin", methods=['GET', 'POST'])
 def loginAdmin():
-    return render_template("login_admin.html")
+    form = floginAdmin()
+    if form.validate_on_submit():
+        flash(f'Selamat Datang !!!','info')
+        return redirect(url_for('radmin.loginAdmin'))
+    return render_template("login_admin.html", form=form)
 
 @radmin.route("/admin-home")
 def adminHome():
