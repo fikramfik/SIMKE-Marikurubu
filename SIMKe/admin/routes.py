@@ -1,5 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, Blueprint, flash, request
 from SIMKe.admin.forms import pendaftaranAdmin, pendaftaranWarga, tambahDataProfile, tambahDataGDS, tambahDataMedia, floginAdmin
+from SIMKe.models import Tadmin, Twarga, Tskbm, Tsktm, Tprofile, Tdatagds, Tmedia
+from SIMKe import db
 
 
 radmin = Blueprint('radmin',__name__)
@@ -28,8 +30,11 @@ def adminSettings():
 def adminPendaftaranAkunAdmin():
     form = pendaftaranAdmin()
     if form.validate_on_submit():
-        flash(f'Akun - {form.email.data} berhasil daftar','warning')
-        return redirect(url_for('radmin.adminPendaftaranAkunAdmin'))
+        add_admin=Tadmin(nama=form.nama.data, email=form.email.data, password=form.password.data)
+        db.session.add(add_admin)
+        db.session.commit()
+        flash(f'Akun - {form.email.data} berhasil daftar, silahkan Login !!!','dark')
+        return redirect(url_for('radmin.loginAdmin'))
     return render_template("pendaftaran_akun_admin.html", form=form)
 
 @radmin.route("/pendaftaran-akun-warga", methods=['GET', 'POST'])
