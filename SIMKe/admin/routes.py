@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, Blueprint, flash, request
 from SIMKe.admin.forms import pendaftaranAdmin, pendaftaranWarga, tambahDataProfile, tambahDataGDS, tambahDataMedia, floginAdmin
 from SIMKe.models import Tadmin, Twarga, Tskbm, Tsktm, Tprofile, Tdatagds, Tmedia
-from SIMKe import db
+from SIMKe import db, bcrypt
 
 
 radmin = Blueprint('radmin',__name__)
@@ -30,7 +30,8 @@ def adminSettings():
 def adminPendaftaranAkunAdmin():
     form = pendaftaranAdmin()
     if form.validate_on_submit():
-        add_admin=Tadmin(nama=form.nama.data, email=form.email.data, password=form.password.data)
+        pass_hash=bcrypt.generate_password_hash(form.password.data).decode('UTF-8')
+        add_admin=Tadmin(nama=form.nama.data, email=form.email.data, password=pass_hash)
         db.session.add(add_admin)
         db.session.commit()
         flash(f'Akun - {form.email.data} berhasil daftar, silahkan Login !!!','dark')
