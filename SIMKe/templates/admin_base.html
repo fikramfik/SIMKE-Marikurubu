@@ -71,7 +71,7 @@
 							<div class="pcoded-inner-navbar main-menu">
 								<div class="">
 									<div class="main-menu-header">
-										<img class="img-40" src="{{ url_for ('static', filename="assets/images/user.png")}}" alt="User-Profile-Image">
+										<img class="img-40" src="{{url_for('static', filename='foto/' + current_user.foto)}}" alt="User-Profile-Image">
 										<div class="user-details">
 											<span>{{current_user.nama}}</span>
 											<span id="more-details">Super Admin<i class="ti-angle-down"></i></span>

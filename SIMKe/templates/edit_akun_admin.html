@@ -8,7 +8,58 @@
     </div>
 </div>
 <div class="page-body">
-
+    <div class="row justify-content-center" style="padding-top: 50px;">
+		<div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
+			<div class="card-header text-center"></div>
+			<div class="card-body">
+				<form method="POST" enctype="multipart/form-data">
+					{{form.hidden_tag()}}
+					<div class="row mb-3">
+						{{form.nama.label(class="form-label")}}
+						{% if form.nama.errors %}
+							{{form.nama(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.nama.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.nama(class="form-control")}}
+						{% endif %}
+					</div>
+					<div class="row mb-3">
+						{{form.email.label(class="form-label")}}
+						{% if form.email.errors %}
+							{{form.email(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.email.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.email(class="form-control")}}
+						{% endif %}
+					</div>
+					<div class="row mb-3">
+						{{form.foto.label(class="form-label")}}
+						{% if form.foto.errors %}
+							{{form.foto(class="form-control is-invalid")}}
+							<div class="invalid-feedback">
+								{% for error in form.foto.errors %}
+								<span>{{error}}</span>
+								{% endfor %}
+							</div>
+						{% else %}
+						{{form.foto(class="form-control")}}
+						{% endif %}
+					</div>
+					<div class="" style="text-align: center;">
+						{{form.submit(class="btn btn-outline-light")}}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 
 {% endblock %}

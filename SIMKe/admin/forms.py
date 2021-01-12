@@ -3,6 +3,7 @@ from wtforms import StringField, SubmitField, TextAreaField, PasswordField, Sele
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flask_wtf.file import FileField, FileAllowed
 from SIMKe.models import Tadmin, Twarga, Tskbm, Tsktm, Tprofile, Tdatagds, Tmedia
+from flask_login import current_user
 
 class floginAdmin(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -52,3 +53,21 @@ class tambahDataMedia(FlaskForm):
     deskripsi = TextAreaField('Deskripsi', validators=[DataRequired()])
     foto = FileField('Foto', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Tambah')
+
+class editAkunAdmin(FlaskForm):
+    nama = StringField('Nama', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    foto= FileField('Ubah Foto Profile', validators=[FileAllowed(['jpg', 'png'])])
+    submit = SubmitField('Simpan')
+
+    # cek validation email
+    def validate_npm(self, email):
+        if email.data != current_user.email:
+            cekemail=Tadmin.query.filter_by(email=email.data).first()
+            if ceknpm:
+                raise ValidationError('EMAIL Sudah Terdaftar, Gunakan EMAIL yang lain')
+
+class editPassAdmin(FlaskForm):
+    password = PasswordField('Password Baru', validators=[DataRequired(),Length(min=6, max=20)])
+    konf_pass = PasswordField('Konfirmasi Password Baru', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Simpan')

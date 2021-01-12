@@ -1,8 +1,12 @@
 from flask import Flask, render_template, redirect, url_for, Blueprint, flash, request
-from SIMKe.admin.forms import pendaftaranAdmin, pendaftaranWarga, tambahDataProfile, tambahDataGDS, tambahDataMedia, floginAdmin
+from SIMKe.admin.forms import pendaftaranAdmin, pendaftaranWarga, tambahDataProfile, tambahDataGDS, tambahDataMedia, floginAdmin, editAkunAdmin, editPassAdmin
 from SIMKe.models import Tadmin, Twarga, Tskbm, Tsktm, Tprofile, Tdatagds, Tmedia
 from SIMKe import db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
+import os
+import secrets
+from SIMKe import app
+from PIL import Image
 
 
 radmin = Blueprint('radmin',__name__)
@@ -37,10 +41,17 @@ def logoutAdmin():
 def adminProfile():
     return render_template("admin_profile.html")
 
-@radmin.route("/admin-settings")
+@radmin.route("/admin-settings", methods=['GET', 'POST'])
 @login_required
 def adminSettings():
-    return render_template("admin_settings.html")
+    form = editPassAdmin()
+    if form.validate_on_submit():
+        pass_hash=bcrypt.generate_password_hash(form.password.data).decode('UTF-8')
+        current_user.password=pass_hash
+        db.session.commit()
+        flash("Data berhasil disimpan", 'info')
+        return redirect(url_for('radmin.adminSettings'))
+    return render_template("admin_settings.html", form=form)
 
 @radmin.route("/pendaftaran-akun-admin", methods=['GET', 'POST'])
 @login_required
@@ -68,10 +79,23 @@ def adminPendaftaranAkunWarga():
         return redirect(url_for('radmin.adminPendaftaranAkunWarga'))
     return render_template("pendaftaran_akun_warga.html", form=form)
 
-@radmin.route("/edit-akun-admin")
+@radmin.route("/edit-akun-admin", methods=['GET', 'POST'])
 @login_required
 def adminEditAkunAdmin():
-    return render_template("edit_akun_admin.html")
+    form = editAkunAdmin()
+    if form.validate_on_submit():
+        if form.foto.data:
+            file_foto=simpan_foto(form.foto.data)
+            current_user.foto = file_foto
+        current_user.nama=form.nama.data
+        current_user.email=form.email.data
+        db.session.commit()
+        flash("Data berhasil disimpan", 'info')
+        return redirect(url_for('radmin.adminEditAkunAdmin'))
+    elif request.method=="GET":
+        form.nama.data=current_user.nama
+        form.email.data=current_user.email
+    return render_template("edit_akun_admin.html", form=form)
 
 @radmin.route("/edit-akun-warga")
 @login_required
@@ -107,7 +131,8 @@ def adminTambahDataGds():
 def adminTambahDataMedia():
     form = tambahDataMedia()
     if form.validate_on_submit():
-        add_datamedia=Tmedia(judul=form.judul.data, deskripsi=form.deskripsi.data, foto=form.foto.data)
+        file_foto=simpan_foto(form.foto.data)
+        add_datamedia=Tmedia(judul=form.judul.data, deskripsi=form.deskripsi.data, foto=file_foto)
         db.session.add(add_datamedia)
         db.session.commit()
         flash(f'Data Media Berhasil ditambahkan','warning')
@@ -138,3 +163,16 @@ def adminPelayananSktm():
 @login_required
 def adminPelayananSkbm():
     return render_template("pelayanan_skbm.html")
+
+#simpan foto
+def simpan_foto(form_foto):
+    random_hex= secrets.token_hex(8)
+    f_name, f_ext= os.path.splitext(form_foto.filename)
+    foto_fn= random_hex + f_ext
+    foto_path= os.path.join(app.root_path, 'SIMKe/static/foto', foto_fn)
+    ubah_size=(300,300)
+    j=Image.open(form_foto)
+    j.thumbnail(ubah_size)
+    j.save(foto_path)
+    # form_foto.save(foto_path)
+    return foto_fn
