@@ -73,7 +73,7 @@
 									<div class="main-menu-header">
 										<img class="img-40" src="{{ url_for ('static', filename="assets/images/user.png")}}" alt="User-Profile-Image">
 										<div class="user-details">
-											<span>Fikram Tamrin</span>
+											<span>{{current_user.nama}}</span>
 											<span id="more-details">Super Admin<i class="ti-angle-down"></i></span>
 										</div>
 									</div>
@@ -82,7 +82,7 @@
 											<li class="more-details">
 												<a href="{{ url_for("radmin.adminProfile")}}"><i class="ti-user"></i>View Profile</a>
 												<a href="{{ url_for("radmin.adminSettings")}}"><i class="ti-settings"></i>Settings</a>
-												<a href="#!"><i class="ti-layout-sidebar-left"></i>Logout</a>
+												<a href="{{ url_for("radmin.logoutAdmin")}}"><i class="ti-layout-sidebar-left"></i>Logout</a>
 											</li>
 										</ul>
 									</div>
