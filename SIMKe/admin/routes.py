@@ -42,6 +42,10 @@ def adminPendaftaranAkunAdmin():
 def adminPendaftaranAkunWarga():
     form = pendaftaranWarga()
     if form.validate_on_submit():
+        pass_hash=bcrypt.generate_password_hash(form.password.data).decode('UTF-8')
+        add_warga=Twarga(nik=form.nik.data, nama=form.nama.data, password=pass_hash)
+        db.session.add(add_warga)
+        db.session.commit()
         flash(f'Akun - {form.nik.data} berhasil daftar','warning')
         return redirect(url_for('radmin.adminPendaftaranAkunWarga'))
     return render_template("pendaftaran_akun_warga.html", form=form)

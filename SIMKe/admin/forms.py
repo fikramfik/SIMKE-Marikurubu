@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField, PasswordField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flask_wtf.file import FileField, FileAllowed
-from SIMKe.models import Tadmin
+from SIMKe.models import Tadmin, Twarga, Tskbm, Tsktm, Tprofile, Tdatagds, Tmedia
 
 class floginAdmin(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -28,6 +28,12 @@ class pendaftaranWarga(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired(),Length(min=6, max=20)])
     konf_pass = PasswordField('Konfirmasi Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Daftar')
+
+    # cek validation nik
+    def validate_nik(self, nik):
+        ceknik=Twarga.query.filter_by(nik=nik.data).first()
+        if ceknik:
+            raise ValidationError('NIK Sudah Terdaftar, Gunakan NIK lain!')
 
 class tambahDataProfile(FlaskForm):
     sambutan = TextAreaField('Sambutan', validators=[DataRequired()])
