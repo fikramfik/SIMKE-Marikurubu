@@ -1,8 +1,27 @@
-@media (max-width: 670px){
-    .tagline h3,h5{
-        display: none;
-    }
+.tulisan{
+  display: none;
 }
+
+@media (max-width: 670px){
+  .card-surat{
+      padding-left: 100px;
+  }
+  .tagline h3,h5{
+      display: none;
+  }
+  .gambarsurat img{
+    display: none;
+  }
+  .tulisan{
+    display: block;
+  }
+  
+  .modaltext{
+    display: block;
+  }
+}
+
+
 
 @media (max-width: 767px){
     .logo-makugawene{

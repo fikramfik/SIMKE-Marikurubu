@@ -65,13 +65,16 @@
 					</a>
 
 					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-					  <a class="dropdown-item" href="#">Surat Online</a>
+					  <a class="dropdown-item" href="{{ url_for("ruser.suratOnline")}}">Surat Online</a>
 					</ul>
 
 				  </li>
 				</ul>
 				<form class="d-flex">
 				  <a class="btn btn-outline-primary my-2 my-sm-0" href="{{ url_for("ruser.aksesLogin")}}">Login</a>
+				</form>
+				<form class="d-flex">
+				  <a class="btn btn-outline-primary my-2 my-sm-0" href="{{ url_for("ruser.logoutUser")}}">Logout</a>
 				</form>
 			  </div>
 			</div>

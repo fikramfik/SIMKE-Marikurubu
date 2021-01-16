@@ -6,6 +6,10 @@ from flask_login import UserMixin
 def load_user(admin_id):
     return Tadmin.query.get(int(admin_id))
 
+@login_manager.user_loader
+def load_warga(warga_id):
+    return Twarga.query.get(int(warga_id))
+
 class Tadmin(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     nama = db.Column(db.String(50), nullable=False)
@@ -16,7 +20,7 @@ class Tadmin(db.Model, UserMixin):
     def __repr__(self):
         return f"Tadmin('{self.nama}','{self.email}','{self.foto}','{self.password}')"
 
-class Twarga(db.Model):
+class Twarga(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     nik = db.Column(db.String(16), unique=True, nullable=False)
     nama = db.Column(db.String(50), nullable=False)

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block konten %}
+
+<div class="section-title">
+    <h2>List Surat</h2>
+</div>
+
+<div class="container">
+	<div class="row justify-content-md-center card-surat">
+		<div class="col-md-auto d-flex">
+			<div class="card text-dark bg-info mb-3" style="max-width: 22rem;">
+				<div class="card-header text-center gambarsurat">
+					<img src="{{ url_for ('static', filename='foto/surat.png')}}" alt="" style="width: 7rem; height: 7rem;">
+					<p class="mb-0 tulisan">Surat Keterangan Tidak Mampu</p>
+				</div>
+				<div class="card-body text-center">
+					<h5 class="card-title pb-3">Surat Keterangan Tidak Mampu</h5>
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+						Buat
+					</button>
+		
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title modaltext" id="exampleModalLabel">Pembuatan SKTM</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									Apakah Anda yakin!!
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tidak</button>
+									<button type="button" class="btn btn-primary">Ya</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-auto d-flex">
+			<div class="card text-dark bg-warning mb-3" style="max-width: 22rem;">
+				<div class="card-header text-center gambarsurat">
+					<img src="{{ url_for ('static', filename='foto/surat.png')}}" alt="" style="width: 7rem; height: 7rem;">
+					<p class="mb-0 tulisan">Surat Keterangan Belum Menikah</p>
+				</div>
+				<div class="card-body text-center">
+					<h5 class="card-title pb-3">Surat Keterangan Belum Menikah</h5>
+					<!-- Button trigger modal -->
+					<button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+						Buat
+					</button>
+		
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Pembuatan SKBM</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">
+									Apakah Anda yakin!!
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tidak</button>
+									<button type="button" class="btn btn-primary">Ya</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
