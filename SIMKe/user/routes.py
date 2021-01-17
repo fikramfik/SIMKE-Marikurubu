@@ -70,3 +70,7 @@ def mBerita():
 def suratOnline():
     return render_template("surat_online.html")
 
+@ruser.route("/surat-online-warga")
+def suratOnlineWarga():
+    return render_template("surat_online_warga.html")
+
