@@ -4,7 +4,7 @@
 
 @media (max-width: 670px){
   .card-surat{
-      padding-left: 100px;
+      padding-left: 50px;
   }
   .tagline h3,h5{
       display: none;
