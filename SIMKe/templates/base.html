@@ -15,7 +15,7 @@
 		<!-- BAGIAN 1 NAVBAR -->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-			  <a class="navbar-brand logo" href="{{ url_for("ruser.home")}}">
+			  	<a class="navbar-brand logo" href="{{ url_for("ruser.home")}}">
 					<img src="{{ url_for ('static', filename="foto/logo1.png")}}" alt="" width="70" height="80" class="d-inline-block align-top">
 				</a>
 				<a class="navbar-brand tagline" href="{{ url_for("ruser.home")}}" style="margin-right: 80px;">
@@ -92,8 +92,8 @@
 						Fikram Tamrin
 					</button>
 					<ul class="dropdown-menu dropdown-menu-end">
-					  <li><button class="dropdown-item" type="button">Profile</button></li>
-					  <li><button class="dropdown-item" type="button">Setings</button></li>
+					  <li><a href="{{ url_for("ruser.profileWarga")}}" class="dropdown-item">Profil</a></li>
+					  <li><a href="{{ url_for("ruser.settings")}}" class="dropdown-item">Setting</a></li>
 					  <li><a href="{{ url_for("ruser.logoutUser")}}" class="dropdown-item">Logout</a></li>
 					</ul>
 				</div>
@@ -141,7 +141,7 @@
 			Dibuat dengan <span style="color: #e25555;">&#9829;</span>
 		  </div>
 		</div>
-	  </footer>
+	</footer>
   
 		
 	<script src="{{ url_for ('static', filename="js/bootstrap.bundle.min.js")}}" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

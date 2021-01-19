@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, Blueprint, flash, request
-from SIMKe.user.forms import loginWarga
+from SIMKe.user.forms import loginWarga, editPassWarga
 from SIMKe.models import Tadmin, Twarga, Tskbm, Tsktm, Tprofile, Tdatagds, Tmedia
 from SIMKe import db, bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
@@ -74,3 +74,17 @@ def suratOnline():
 def suratOnlineWarga():
     return render_template("surat_online_warga.html")
 
+@ruser.route("/profile-warga")
+def profileWarga():
+    return render_template("profile_warga.html")
+
+@ruser.route("/settings", methods=['GET', 'POST'])
+def settings():
+    form = editPassWarga()
+    if form.validate_on_submit():
+        pass_hash=bcrypt.generate_password_hash(form.password.data).decode('UTF-8')
+        current_user.password=pass_hash
+        db.session.commit()
+        flash("Data berhasil disimpan", 'info')
+        return redirect(url_for('ruser.settings'))
+    return render_template("settings.html", form=form)

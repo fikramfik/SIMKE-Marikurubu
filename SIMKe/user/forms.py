@@ -8,3 +8,8 @@ class loginWarga(FlaskForm):
     nik = StringField('NIK', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
+
+class editPassWarga(FlaskForm):
+    password = PasswordField('Password Baru', validators=[DataRequired(),Length(min=6, max=20)])
+    konf_pass = PasswordField('Konfirmasi Password Baru', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Simpan')

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block konten %}
+
+<div class="section-title">
+    <h2>Setting</h2>
+</div>  
+<div class="container">
+    <div class="page-body">
+        <div class="row justify-content-center" style="padding-top: 20px; padding-bottom: 20px;">
+            <div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
+                <div class="card-header text-center">Ubah Password</div>
+                <div class="card-body">
+                    <form method="POST">
+                        {{form.hidden_tag()}}
+                        <div class="row mb-3">
+                            {{form.password.label(class="form-label")}}
+                            {% if form.password.errors %}
+                                {{form.password(class="form-control is-invalid")}}
+                                <div class="invalid-feedback">
+                                    {% for error in form.password.errors %}
+                                    <span>{{error}}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                            {{form.password(class="form-control")}}
+                            {% endif %}
+                        </div>
+                        <div class="row mb-3">
+                            {{form.konf_pass.label(class="form-label")}}
+                            {% if form.konf_pass.errors %}
+                                {{form.konf_pass(class="form-control is-invalid")}}
+                                <div class="invalid-feedback">
+                                    {% for error in form.konf_pass.errors %}
+                                    <span>{{error}}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                            {{form.konf_pass(class="form-control")}}
+                            {% endif %}
+                        </div>
+                        <div class="" style="text-align: center;">
+                            {{form.submit(class="btn btn-outline-light")}}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
